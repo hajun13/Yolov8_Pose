@@ -89,6 +89,5 @@ while capture.isOpened():
     else:
         break
 
-# 비디오 캡처 해제 및 모든 창 닫기
 capture.release()
 cv2.destroyAllWindows()
