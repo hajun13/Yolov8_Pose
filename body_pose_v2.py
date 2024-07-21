@@ -1,13 +1,11 @@
 import cv2
 from ultralytics import YOLO
 
-# YOLO 모델 초기화
 model = YOLO("yolov8n-pose.pt")
 
-# 비디오 캡처 초기화
-capture = cv2.VideoCapture(1)  # 기본 카메라 사용, 필요시 1로 변경
+capture = cv2.VideoCapture(1) 
 
-# 포즈 연결 정의
+# 원하는 부위 연결 가능
 CONNECTIONS = [
     (0, 1), (0, 2), (1, 2), (1, 3), (2, 4),
     (3, 5), (4, 6), (5, 6), (5, 7), (6, 8),
@@ -84,10 +82,8 @@ while capture.isOpened():
                 cv2.LINE_AA
             )
 
-        # 결과 프레임 표시
         cv2.imshow("YOLOv8 human pose estimation", annotatedFrame)
 
-        # 'q' 키를 누르면 루프 종료
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
     else:
