@@ -24,7 +24,6 @@ while capture.isOpened():
             continue
         if len(results[0].keypoints) == 0 or results[0].keypoints is None:
             continue
-
         large_person_index = -1
         large_person_size = 0
 
