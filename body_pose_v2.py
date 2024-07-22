@@ -22,9 +22,7 @@ while capture.isOpened():
 
         if not results:
             continue
-        if len(results[0].keypoints) == 0:
-            continue
-        if results[0].keypoints is None:
+        if len(results[0].keypoints) == 0 or results[0].keypoints is None:
             continue
 
         large_person_index = -1
@@ -32,9 +30,7 @@ while capture.isOpened():
 
         for i, result in enumerate(results):
             keypoints = result.keypoints
-            if keypoints.xy is None:
-                continue
-            if keypoints.xy[0].tolist() == []:
+            if keypoints.xy is None or keypoints.xy[0].tolist() == []:
                 continue
 
             x_coords = [pt[0] for pt in keypoints.xy[0]]
@@ -54,9 +50,7 @@ while capture.isOpened():
 
         keypoints = results[large_person_index].keypoints
 
-        if keypoints.conf is None:
-            continue
-        if keypoints.xy is None:
+        if keypoints.conf is None or keypoints.xy is None:
             continue
 
         confs = keypoints.conf[0].tolist()  
